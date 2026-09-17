@@ -1,0 +1,6 @@
+# sample_data/shadow_sample.txt
+# Fake shadow entries for demo (DO NOT use real accounts)
+
+ansh:$6$rounds=5000$saltsalt$fakehashvaluehere1234567890abcdefghijklmnopqrstuvwxyz:19000:0:99999:7:::
+test:$1$abc$MD5hashexample123456789012345:19000:0:99999:7:::
+admin:$6$rounds=5000$anothersalt$anotherfakehashvalue1234567890abcdefghijklmnopqrst:19000:0:99999:7:::
