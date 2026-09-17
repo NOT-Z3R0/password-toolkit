@@ -1,38 +1,56 @@
-# Password Policy Testing Toolkit
+# Password Policy Testing & Credential Security Assessment Toolkit
 
-This project is a simple toolkit for testing password policies and understanding credential security.  
-It is meant only for ethical, controlled lab use (your own VMs and test accounts).
+## Description
+
+Educational lab project to study how passwords are stored, attacked, and audited.  
+This toolkit provides a controlled environment to understand password cracking techniques, how credentials are stored, and how security teams can reinforce authentication mechanisms.
+
+This project is for ethical, lab-only use to understand evasion techniques and improve defensive authentication security.
+
+GitHub Repository:  
+https://github.com/NOT-Z3R0/password-toolkit
 
 ## Features
 
-- Dictionary generator (with basic mutations and patterns)
-- Hash extraction parser (Linux shadow and Windows NTLM style files)
-- Brute-force simulation (estimates time to crack)
-- Password strength analyzer (complexity + basic entropy)
-- Simple audit report generation
+- **Dictionary Generator**  
+  - Generate custom wordlists based on names, DOB, and common patterns  
+  - Apply mutation rules (leet‑speak, uppercase variations, appended/prepended numbers)  
 
-## Setup
+- **Hash Extraction Module**  
+  - Parse Linux `/etc/shadow` style files  
+  - Parse Windows NTLM‑style hash files (offline, lab only)  
+  - Identify hashing algorithms (MD5, SHA‑256, SHA‑512, NTLM, etc.)  
 
-1. Install Python 3.10+  
-2. Create a virtual environment (optional but recommended):
+- **Brute‑Force Simulator**  
+  - Simulate brute‑force cracking attempts  
+  - Support incremental mode (a–z, A–Z, 0–9, symbols)  
+  - Provide estimated time‑to‑crack metrics  
 
-   ```bash
-   python -m venv venv
-   # On Windows
-   venv\Scripts\activate
-   # On Linux / macOS
-   source venv/bin/activate
-   ```
+- **Password Strength Analyzer**  
+  - Check complexity requirements (length, character classes)  
+  - Estimate entropy and detect pattern‑based weaknesses  
+  - Provide improvement recommendations and severity rating  
 
-3. Install dependencies:
+- **Report Generation**  
+  - Summary of weak passwords found  
+  - Brute‑force simulation results  
+  - Recommended password policies and mitigation steps  
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Installation
+
+```bash
+git clone https://github.com/NOT-Z3R0/password-toolkit.git
+cd password-toolkit
+
+# (Optional) Create a virtual environment:
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies:
+pip install -r requirements.txt
+```
 
 ## Usage
-
-All commands are run from the project root folder.
 
 ### Generate dictionary
 
@@ -48,13 +66,13 @@ Linux shadow sample:
 python main.py extract-hashes --linux-shadow sample_data/shadow_sample.txt --output-json reports/hashes.json
 ```
 
-Windows NTLM style sample:
+Windows NTLM sample:
 
 ```bash
 python main.py extract-hashes --windows-ntlm sample_data/ntlm_hashes.txt --output-json reports/hashes.json
 ```
 
-You can also combine both:
+Combined:
 
 ```bash
 python main.py extract-hashes --linux-shadow sample_data/shadow_sample.txt --windows-ntlm sample_data/ntlm_hashes.txt --output-json reports/hashes.json
@@ -69,7 +87,7 @@ python main.py analyze-passwords \
   --output-json reports/analysis.json
 ```
 
-### Brute-force simulation
+### Brute‑force simulation
 
 ```bash
 python main.py simulate-bruteforce \
@@ -89,21 +107,15 @@ python main.py full-audit \
   --output-dir reports
 ```
 
-This will generate:
+Reports are saved to:
 
-- `reports/audit_report.json`
-- `reports/audit_report.md`
+- `reports/audit_report.json`  
+- `reports/audit_report.md`  
 
 ## Ethics and legal notice
 
 This toolkit is only for educational purposes in a controlled lab environment.  
 Do not use it against real user accounts, production systems, or any system you do not own or have explicit permission to test.
 
-## Project structure
-
-- `main.py` – CLI entry point  
-- `modules/` – core logic (dictionary, hashes, brute-force, analyzer, report)  
-- `sample_data/` – example shadow and NTLM files (fake data)  
-- `wordlists/` – generated dictionaries  
-- `reports/` – generated reports  
-- `docs/` – diagrams and documentation assets
+Always follow your local laws and your organization’s security policies.  
+The author is not responsible for any misuse of this project.
