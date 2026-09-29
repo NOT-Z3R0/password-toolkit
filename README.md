@@ -7,8 +7,6 @@ This toolkit provides a controlled environment to understand password cracking t
 
 This project is for ethical, lab-only use to understand evasion techniques and improve defensive authentication security.
 
-GitHub Repository:  
-https://github.com/NOT-Z3R0/password-toolkit
 
 ## Features
 
